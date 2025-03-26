@@ -71,8 +71,8 @@ static uint16_t mqtt_port = 1883;
 /*const char *ssid = "Nijam2"; // Add your Wi-Fi ssid
 const char *password = "diojao271104";      // Add your Wi-Fi password*/
 
-const char *ssid = "MonaConnect"; // Add your Wi-Fi ssid
-const char *password = "";      // Add your Wi-Fi password
+const char *ssid = "Orville's S24 Ultra"; // Add your Wi-Fi ssid
+const char *password = "ijun1234";      // Add your Wi-Fi password
 
 /*const char *ssid = "DESKTOP-5OQ7KPH 7364";
 const char *password = "88J]7v84";*/
@@ -85,13 +85,14 @@ TaskHandle_t xUpdateHandle = NULL;
 TaskHandle_t xButtonCheckeHandle = NULL;
 
 //Function Declaration
-void checkHEAP(const char* Name);   // RETURN REMAINING HEAP SIZE FOR A TASK
-void initMQTT(void);                // CONFIG AND INITIALIZE MQTT PROTOCOL
-unsigned long getTimeStamp(void);   // GET 10 DIGIT TIMESTAMP FOR CURRENT TIME
-void callback(char* topic, byte* payload, unsigned int length);
+void checkHEAP(const char *Name); // RETURN REMAINING HEAP SIZE FOR A TASK
+void initMQTT(void);              // CONFIG AND INITIALIZE MQTT PROTOCOL
+unsigned long getTimeStamp(void); // GET 10 DIGIT TIMESTAMP FOR CURRENT TIME
+void callback(char *topic, byte *payload, unsigned int length);
 void initialize(void);
 bool publish(const char *topic, const char *payload); // PUBLISH MQTT MESSAGE(PAYLOAD) TO A TOPIC
-void vUpdate( void * pvParameters );  
+void vButtonCheck(void *pvParameters);
+void vUpdate(void *pvParameters);
 bool isNumber(double number);
 
 #ifndef NTP_H
@@ -131,7 +132,6 @@ void setup(){
 
   initialize();           // INIT WIFI, MQTT & NTP
   //vButtonCheckFunction(); 
-  vUpdateFunction();
 }
 
 void loop(){
@@ -171,7 +171,6 @@ void vUpdate( void * pvParameters )  {
           tft.print("Station");
           tft.setTextColor(ILI9341_WHITE);
  
-          if(isNumber(t) and isNumber(p) and isNumber(alt) and isNumber(h) and isNumber(m)){
               // 1. Create JSon object
               JsonDocument doc;
               
@@ -195,7 +194,6 @@ void vUpdate( void * pvParameters )  {
               if(mqtt.connected() ){
                 publish(pubtopic, message);
               }       
-          }   
 
           /*Serial.println("Humidity");
           Serial.println(h);
@@ -254,7 +252,7 @@ bool publish(const char *topic, const char *payload){
      bool res = false;
      try{
         res = mqtt.publish(topic,payload);
-        // Serial.printf("\nres : %d\n",res);
+        Serial.printf("\nres : %d\n",res);
         if(!res){
           res = false;
           throw false;
