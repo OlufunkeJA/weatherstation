@@ -68,12 +68,12 @@
             </v-card>
         </VCol>
     </VRow>
-<!--
+
     <VRow align = "center">
         <VCol align = "center">
-            <VBtn @click="updateCards()" class = "text-caption" text = "UPDATE" variant = "tonal"></VBtn>
+            <VBtn @click="changeUnit()" class = "text-caption" text = "CHANGE TEMP & HEAT INDEX UNITS" variant = "tonal"></VBtn>
         </VCol>
-    </VRow>-->
+    </VRow>
     <!--<VRow align = "center" class = "bottom">
         <VCol align = "center">
             <VBtn class = "btn" variant = "plain" size = "x-small" justify = "center" v-if="!connectMqtt == true" @click = "buttonClick(this)" >
@@ -86,7 +86,7 @@
             </VBtn>
         </VCol>
     </VRow>-->
-    <div class="py-3"/>
+    
     <VImg src="@/assets/grass.png" />
     </VResponsive>
 </template>
@@ -107,6 +107,7 @@ const route = useRoute();
 const AppStore = useAppStore();
 const Mqtt = useMqttStore();
 const { payload, payloadTopic,connectMqtt } = storeToRefs(Mqtt);  
+let temp = "C";
 
 // FUNCTIONS
 onMounted(()=>{
@@ -126,13 +127,23 @@ onBeforeUnmount(()=>{
 
 const temperature = computed(()=>{
 if(!!payload.value){
-return `${payload.value.temperature.toFixed(2)} °C`;
+    if (temp == "C"){
+        return `${payload.value.temperature.toFixed(2)} °C`;
+    }
+    if (temp == "F"){
+        return `${((payload.value.temperature*9/5)+32).toFixed(2)} F`;
+    }
 }
 });
 
 const heatIndex = computed(()=>{
 if(!!payload.value){
-return `${payload.value.heatindex.toFixed(2)} °C`;
+    if (temp == "C"){
+        return `${payload.value.heatindex.toFixed(2)} °C`;
+    }
+    if (temp == "F"){
+        return `${((payload.value.heatindex*9/5)+32).toFixed(2)} F`;
+    }
 }
 });
 
@@ -160,11 +171,14 @@ return `${payload.value.moisture.toFixed(2)} %`;
 }
 });
 
-const buttonClick = async (btn) => {
-    let hidden = btn.getAttribute("hidden");
-    btn.setAttribute("hidden","hidden");
-};
-
+const changeUnit = async () => {
+    if(temp == "C"){
+        temp = "F";
+    }
+    else if (temp == "F"){
+        temp = "C";
+    }
+}
 </script>
 
 
@@ -185,6 +199,7 @@ const buttonClick = async (btn) => {
 
 .text-caption{
     background-color: olive;
+    color: white;
 }
 
 .span{

@@ -1,4 +1,6 @@
 <template>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
     <v-container fluid>
         <!--<VRow align = "center">
             <VCol align = "center">
@@ -6,26 +8,42 @@
             </VCol>
         </VRow>-->
 
-        <VRow class = "row, row1" align = "center">
+        <VRow class = "row" align = "center">
+            <VCol>
+                <VRow align = "center">
+                    <div class="headerDiv">
+                        <h1>Backcast</h1>
+
+                        <div class = "py-1" />
+
+                        <div class = "paraDiv">
+                            <p>Enter start and end dates to see the max, min, average, and range for that period!</p>
+                        </div>
+                    </div>                    
+                </VRow>
+            </VCol>
+
             <VCol align = "center">
                 <v-sheet class = "sheet">
                     <v-text-field class = "textField, textField1" label = "Start Date" type = "Date" density = "compact" variant = "solo-inverted" flat v-model="start"></v-text-field>                
                     <v-text-field class = "textField,textField1" label = "End Date" type = "Date" density = "compact" variant = "solo-inverted" flat v-model="end"></v-text-field>
                 </v-sheet>
-            </VCol>
-        </VRow>
 
-        <VRow align = "center">
-            <VCol align = "center">
+                <div class = "py-3"/>
                 <VBtn @click="updateCards();" class = "text-caption" text = "Analyse"  variant = "plain"></VBtn>
-            </VCol>            
+            </VCol>
+
+            <VCol>
+                <VImg class="mb-1" src="@/assets/clouds+sun.png" />
+            </VCol>
+            
         </VRow>
 
         <VRow align = "center">
             <VCol align = "center">
-                <v-card title = "Temperature" width = "300" variant = "outlined" color = "primary" density = "compact" rounded = "lg" align = "center">
-                    <v-card-item margin-bottom = "n5" align = "center">
-                        <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat">
+                <v-card title = "Temperature" width = "auto" variant = "outlined" color = "primary" density = "compact" rounded = "lg" align = "center">
+                    <v-card-item width = "auto" class = "mb-n5" align = "center">
+                        <v-chip-group width = "auto" class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat" align = "center">
                             <v-tooltip text = "Min" location = "start"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ temperature.min }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Range" location = "top"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ temperature.range }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Max" location = "end"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ temperature.max }}</v-chip></template></v-tooltip>
@@ -39,9 +57,9 @@
             </VCol>
 
             <VCol  align = "center">
-                <v-card title = "Humidity" width = "300" variant = "outlined" color = "primary" density = "compact" rounded = "lg">
-                    <v-card-item margin-bottom = "n5" align = "center">
-                        <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat">
+                <v-card title = "Humidity" width = "auto" variant = "outlined" color = "primary" density = "compact" rounded = "lg" align = "center">
+                    <v-card-item class = "mb-n5" align = "center">
+                        <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat" align = "center">
                             <v-tooltip text = "Min" location = "start"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ humidity.min }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Range" location = "top"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ humidity.range }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Max" location = "end"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ humidity.max }}</v-chip></template></v-tooltip>
@@ -55,8 +73,8 @@
             </VCol>
             
             <VCol align = "center">
-                <v-card title = "Heat Index" width = "300" variant = "outlined" color = "primary" density = "compact" rounded = "lg">
-                    <v-card-item margin-bottom = "n5" align = "center">
+                <v-card title = "Heat Index" width = "auto" variant = "outlined" color = "primary" density = "compact" rounded = "lg">
+                    <v-card-item class = "mb-n5" align = "center">
                         <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat">
                             <v-tooltip text = "Min" location = "start"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ heatIndex.min }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Range" location = "top"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ heatIndex.range }}</v-chip></template></v-tooltip>
@@ -73,8 +91,8 @@
 
         <VRow align = "center">
             <VCol align = "center">
-                <v-card title = "Pressure" width = "300" variant = "outlined" color = "primary" density = "compact" rounded = "lg" align = "center">
-                    <v-card-item margin-bottom = "n5" align = "center">
+                <v-card title = "Pressure" width = "auto" variant = "outlined" color = "primary" density = "compact" rounded = "lg" align = "center">
+                    <v-card-item class = "mb-n5" align = "center">
                         <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat">
                             <v-tooltip text = "Min" location = "start"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ pressure.min }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Range" location = "top"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ pressure.range }}</v-chip></template></v-tooltip>
@@ -89,8 +107,8 @@
             </VCol>
 
             <VCol  align = "center">
-                <v-card title = "Altitude" width = "300" variant = "outlined" color = "primary" density = "compact" rounded = "lg">
-                    <v-card-item margin-bottom = "n5" align = "center">
+                <v-card title = "Altitude" width = "auto" variant = "outlined" color = "primary" density = "compact" rounded = "lg">
+                    <v-card-item class = "mb-n5" align = "center">
                         <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat">
                             <v-tooltip text = "Min" location = "start"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ altitude.min }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Range" location = "top"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ altitude.range }}</v-chip></template></v-tooltip>
@@ -105,9 +123,9 @@
             </VCol>
             
             <VCol align = "center">
-                <v-card title = "Moisture" width = "300" variant = "outlined" color = "primary" density = "compact" rounded = "lg">
-                    <v-card-item margin-bottom = "n5" align = "center">
-                        <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat">
+                <v-card title = "Moisture" width = "auto" variant = "outlined" color = "primary" density = "compact" rounded = "lg">
+                    <v-card-item class = "mb-n5" align = "center">
+                        <v-chip-group class = "d-flex-flex-row justify-center" color = "primaryContainer" variant = "flat" justify = "center">
                             <v-tooltip text = "Min" location = "start"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ moisture.min }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Range" location = "top"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ moisture.range }}</v-chip></template></v-tooltip>
                             <v-tooltip text = "Max" location = "end"><template v-slot:activator="{ on, attrs }"><v-chip v-bind="attrs" v-on="on">{{ moisture.max }}</v-chip></template></v-tooltip>
@@ -177,10 +195,10 @@ const updateCards = async () => {
         //Fetch data from backend by calling the API functions
         const temp = await AppStore.getTemperatureMMAR(startDate,endDate);
         const humid = await AppStore.getHumidityMMAR(startDate,endDate);
-        const heatIndex = await AppStore.getHeatIndexMMAR(startDate,endDate);
-        const pressure = await AppStore.getPressureMMAR(startDate,endDate);
-        const altitude = await AppStore.getAltitudeMMAR(startDate,endDate);
-        const moisture = await AppStore.getMoistureMMAR(startDate,endDate);
+        const heatindex = await AppStore.getHeatIndexMMAR(startDate,endDate);
+        const press = await AppStore.getPressureMMAR(startDate,endDate);
+        const alt = await AppStore.getAltitudeMMAR(startDate,endDate);
+        const moist = await AppStore.getMoistureMMAR(startDate,endDate);
         
         //Temperature MMAR
         temperature.max = temp[0].max.toFixed(1);
@@ -195,40 +213,35 @@ const updateCards = async () => {
         humidity.range = humid[0].range.toFixed(1);
 
         //Heat Index MMAR
-        heatIndex.min = heatIndex[0].max.toFixed(1);
-        heatIndex.max = heatIndex[0].min.toFixed(1);
-        heatIndex.avg = heatIndex[0].avg.toFixed(1);
-        heatIndex.range = heatIndex[0].range.toFixed(1);
+        heatIndex.min = heatindex[0].max.toFixed(1);
+        heatIndex.max = heatindex[0].min.toFixed(1);
+        heatIndex.avg = heatindex[0].avg.toFixed(1);
+        heatIndex.range = heatindex[0].range.toFixed(1);
 
         //Pressure MMAR
-        pressure.min = pressure[0].max.toFixed(1);
-        pressure.max = pressure[0].min.toFixed(1);
-        pressure.avg = pressure[0].avg.toFixed(1);
-        pressure.range = pressure[0].range.toFixed(1);
+        pressure.min = press[0].max.toFixed(1);
+        pressure.max = press[0].min.toFixed(1);
+        pressure.avg = press[0].avg.toFixed(1);
+        pressure.range = press[0].range.toFixed(1);
 
         //Altitude MMAR
-       altitude.min = altitude[0].max.toFixed(1);
-       altitude.max = altitude[0].min.toFixed(1);
-       altitude.avg = altitude[0].avg.toFixed(1);
-       altitude.range = altitude[0].range.toFixed(1);
+        altitude.min = alt[0].max.toFixed(1);
+        altitude.max = alt[0].min.toFixed(1);
+        altitude.avg = alt[0].avg.toFixed(1);
+        altitude.range = alt[0].range.toFixed(1);
 
-       //Moisture MMAR
-       moisture.min = moisture[0].max.toFixed(1);
-       moisture.max = moisture[0].min.toFixed(1);
-       moisture.avg = moisture[0].avg.toFixed(1);
-       moisture.range = moisture[0].range.toFixed(1);
-    }
+        //Moisture MMAR
+        moisture.min = moist[0].max.toFixed(1);
+        moisture.max = moist[0].min.toFixed(1);
+        moisture.avg = moist[0].avg.toFixed(1);
+        moisture.range = moist[0].range.toFixed(1);
+        }
 }
 </script>
 
 <style scoped>
 /** CSS STYLE HERE */
 .row{
-    max-width: 1200px;
-}
-
-.row1{
-    padding: 1;
 }
 
 .sheet{
@@ -246,13 +259,36 @@ const updateCards = async () => {
 }
 
 .text-caption{
-    color: rgb(18, 18, 180);
-    border-color: rgb(18, 18, 180);
+    color: olive;
+    border-color: olive;
     border-width:2px;
 }
 
 h1{
-    color: rgb(18, 18, 180);
+    color: olive;
+    font-size:50px;
+    font-family: "Sofia", sans-serif;
+    text-shadow: 3px 3px 3px #ababab;
+}
+
+p{
+    color:olive;
+    font-size: 16   px;
+}
+
+.headerDiv{
+    padding: 70px;
+    padding-bottom:0px;
+    padding-top: 30px;
+}
+
+.paraDiv{
+    padding: 20px;
+    padding-top:0px;
+}
+
+.justify-center{
+    justify-content: center;
 }
 </style>
   

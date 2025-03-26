@@ -1,10 +1,12 @@
 <template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
   <VContainer class="fill-height">  
     
     <VResponsive class="align-center text-center fill-height">
       <VImg height="273" class="mb-1" src="@/assets/start.png" />
 
-      <h1>Olufunke's</h1>
+      <h1 class = "name">Olufunke's</h1>
       <h1 class="text-h2 font-weight-bold">Weather Station</h1>
  
       <div class="py-5"/>
@@ -58,6 +60,11 @@ onBeforeUnmount(()=>{
 
 h1{
   color: olive;
+}
+
+.name{
+  font-family: "Sofia", sans-serif;
+  text-shadow: 3px 3px 3px #ababab;
 }
 
 </style>

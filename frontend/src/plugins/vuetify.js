@@ -14,7 +14,8 @@ import { createVuetify } from 'vuetify'
 const lightMode = {
   dark: false,
   colors: {
-    primary : "#335CA8",
+    //primary : "#335CA8",
+    primary: "#808000",
     onPrimary : "#FFFFFF",
     primaryContainer : "#D8E2FF",
     onPrimaryContainer : "#001A42",
@@ -50,7 +51,7 @@ const lightMode = {
 const darkMode = {
   dark: true,
   colors: {
-    primary : "#AEC6FF",
+    primary: "#808000",
     onPrimary : "#002E6B",
     primaryContainer : "#12448F",
     onPrimaryContainer : "#D8E2FF",

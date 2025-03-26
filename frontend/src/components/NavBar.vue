@@ -22,7 +22,7 @@
                             </RouterLink>
 
                             <RouterLink class="route" to="/graphs">
-                                <VBtn class="text-subtitle-2" density="compact" color="primary" :variant="(route.name == 'Graphs')? 'tonal':'text'">Graphical Analysis</VBtn>
+                                <VBtn class="text-subtitle-2" density="compact" color="primary" :variant="(route.name == 'Graphs')? 'tonal':'text'">Graphical Data</VBtn>
                             </RouterLink>                           
 
                         </VCol>
@@ -85,6 +85,7 @@
         text-decoration: none;
         margin-left: 8px;
         margin-right: 8px; 
+        color: olive;
     }
   </style>
   

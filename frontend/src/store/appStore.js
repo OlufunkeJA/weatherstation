@@ -87,7 +87,7 @@ export const useAppStore =  defineStore('app', ()=>{
         const controller = new AbortController();
         const signal = controller.signal;
         const id = setTimeout(()=>{controller.abort()},60000);
-        const URL = `/api/mmar/temperature/${start}/${end}`;
+        const URL = `http://localhost:5000/api/mmar/temperature/${start}/${end}`;
 
         try {
             const response = await fetch(URL,{ method: 'GET', signal: signal });
@@ -122,7 +122,7 @@ export const useAppStore =  defineStore('app', ()=>{
             const controller = new AbortController();
             const signal = controller.signal;
             const id = setTimeout(()=>{controller.abort()},60000);
-            const URL = `/api/mmar/humidity/${start}/${end}`;
+            const URL = `http://localhost:5000/api/mmar/humidity/${start}/${end}`;
     
             try {
                 const response = await fetch(URL,{ method: 'GET', signal: signal });
@@ -155,10 +155,11 @@ export const useAppStore =  defineStore('app', ()=>{
         const controller = new AbortController();
         const signal = controller.signal;
         const id = setTimeout(()=>{controller.abort()},60000);
-        const URL = `/api/mmar/heatIndex/${start}/${end}`;
+        const URL = `http://localhost:5000/api/mmar/heatIndex/${start}/${end}`;
 
         try {
             const response = await fetch(URL,{ method: 'GET', signal: signal });
+            console.log(response);
 
             if (response.ok){
                 const data = await response.json();
@@ -188,7 +189,7 @@ export const useAppStore =  defineStore('app', ()=>{
         const controller = new AbortController();
         const signal = controller.signal;
         const id = setTimeout(()=>{controller.abort()},60000);
-        const URL = `/api/mmar/pressure/${start}/${end}`;
+        const URL = `http://localhost:5000/api/mmar/pressure/${start}/${end}`;
 
         try {
             const response = await fetch(URL,{ method: 'GET', signal: signal });
@@ -221,7 +222,7 @@ export const useAppStore =  defineStore('app', ()=>{
         const controller = new AbortController();
         const signal = controller.signal;
         const id = setTimeout(()=>{controller.abort()},60000);
-        const URL = `/api/mmar/altitude/${start}/${end}`;
+        const URL = `http://localhost:5000/api/mmar/altitude/${start}/${end}`;
 
         try {
             const response = await fetch(URL,{ method: 'GET', signal: signal });
@@ -254,7 +255,7 @@ export const useAppStore =  defineStore('app', ()=>{
         const controller = new AbortController();
         const signal = controller.signal;
         const id = setTimeout(()=>{controller.abort()},60000);
-        const URL = `/api/mmar/moisture/${start}/${end}`;
+        const URL = `http://localhost:5000/api/mmar/moisture/${start}/${end}`;
 
         try {
             const response = await fetch(URL,{ method: 'GET', signal: signal });
