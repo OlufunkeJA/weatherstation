@@ -74,73 +74,7 @@ class DB:
             msg = str(e)
             print("range error ",msg)            
         else:                  
-            return result
-    
-    def humidity(self):
-        try:
-            remotedb 	= self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port), tls=self.tls)
-            result      = list(remotedb.ELET2415.station.aggregate())
-
-        except Exception as e:
-            msg = str(e)
-            print("humidity error ",msg)            
-        else:                  
-            return result
-        
-    def temperature(self):
-        try:
-            remotedb 	= self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port), tls=self.tls)
-            result      = list(remotedb.ELET2415.station.aggregate())
-
-        except Exception as e:
-            msg = str(e)
-            print("temperature error ",msg)            
-        else:                  
-            return result
-        
-    def heatIndex(self):
-        try:
-            remotedb 	= self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port), tls=self.tls)
-            result      = list(remotedb.ELET2415.station.aggregate())
-
-        except Exception as e:
-            msg = str(e)
-            print("heat error ",msg)            
-        else:                  
-            return result
-
-    def pressure(self):
-        try:
-            remotedb 	= self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port), tls=self.tls)
-            result      = list(remotedb.ELET2415.station.aggregate())
-        except Exception as e:
-            msg = str(e)
-            print("temperature error ",msg)            
-        else:                  
-            return result
-        
-    def altitude(self):
-        try:
-            remotedb 	= self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port), tls=self.tls)
-            result      = list(remotedb.ELET2415.station.aggregate())
-
-        except Exception as e:
-            msg = str(e)
-            print("temperature error ",msg)            
-        else:                  
-            return result
-        
-    def moisture(self):
-        try:
-            remotedb 	= self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port), tls=self.tls)
-            result      = list(remotedb.ELET2415.station.aggregate())
-
-        except Exception as e:
-            msg = str(e)
-            print("temperature error ",msg)            
-        else:                  
-            return result
-        
+            return result 
 
     def humidityMMAR(self,start, end):
         try:
