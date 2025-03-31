@@ -71,11 +71,14 @@ static uint16_t mqtt_port = 1883;
 /*const char *ssid = "Nijam2"; // Add your Wi-Fi ssid
 const char *password = "diojao271104";      // Add your Wi-Fi password*/
 
-const char *ssid = "Orville's S24 Ultra"; // Add your Wi-Fi ssid
-const char *password = "ijun1234";      // Add your Wi-Fi password
+/*const char *ssid = "Orville's S24 Ultra"; // Add your Wi-Fi ssid
+const char *password = "ijun1234";      // Add your Wi-Fi password*/
 
 /*const char *ssid = "DESKTOP-5OQ7KPH 7364";
 const char *password = "88J]7v84";*/
+
+const char *ssid = "MonaConnect";
+const char *password = "";
 
 //Task Handles
 TaskHandle_t xMQTT_Connect = NULL;
